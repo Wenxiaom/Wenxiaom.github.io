@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/10 | Hexo</title>
+  <title>Mysql数据库 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2019/10/index.html">
+  <meta name="description" content="1、建表   命令：create table &amp;lt;表名&amp;gt; ( &amp;lt;字段名&amp;gt; &amp;lt;类型&amp;gt; [,..&amp;lt;字段名n&amp;gt; &amp;lt;类型n&amp;gt;]);   mysql&amp;gt; create table MyClass(   &amp;gt; id int(4) not null primary key auto_increment,   &amp;gt; name char(20)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mysql数据库">
+<meta property="og:url" content="http://yoursite.com/2019/10/17/Mysql数据库/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1、建表   命令：create table &amp;lt;表名&amp;gt; ( &amp;lt;字段名&amp;gt; &amp;lt;类型&amp;gt; [,..&amp;lt;字段名n&amp;gt; &amp;lt;类型n&amp;gt;]);   mysql&amp;gt; create table MyClass(   &amp;gt; id int(4) not null primary key auto_increment,   &amp;gt; name char(20)">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-17T14:21:06.394Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Mysql数据库">
+<meta name="twitter:description" content="1、建表   命令：create table &amp;lt;表名&amp;gt; ( &amp;lt;字段名&amp;gt; &amp;lt;类型&amp;gt; [,..&amp;lt;字段名n&amp;gt; &amp;lt;类型n&amp;gt;]);   mysql&amp;gt; create table MyClass(   &amp;gt; id int(4) not null primary key auto_increment,   &amp;gt; name char(20)">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,76 +154,201 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Mysql数据库" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Mysql数据库
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/17/Mysql数据库/" class="archive-article-date">
+
+        
+        <a href="/2019/10/17/Mysql数据库/" class="archive-article-date">
   	<time datetime="2019-10-17T14:12:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-17</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/17/Mysql数据库/">Mysql数据库</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>1、建表  </li>
+<li>命令：<strong>create</strong> <strong>table</strong> &lt;表名&gt; ( &lt;字段名&gt; &lt;类型&gt; [,..&lt;字段名n&gt; &lt;类型n&gt;]);  </li>
+<li>mysql&gt; <strong>create</strong> <strong>table</strong> MyClass(  </li>
+<li>&gt; id <strong>int</strong>(4) not null <strong>primary</strong> <strong>key</strong> auto_increment,  </li>
+<li>&gt; <strong>name</strong> <strong>char</strong>(20) not null,  </li>
+<li>&gt; sex <strong>int</strong>(4) not null <strong>default</strong> ’′,  </li>
+<li>&gt; degree <strong>double</strong>(16,2));  </li>
+<li>2、获取表结构  </li>
+<li>命令：<strong>desc</strong> 表名，或者show columns <strong>from</strong> 表名  </li>
+<li>mysql&gt;DESCRIBE MyClass  </li>
+<li>mysql&gt; <strong>desc</strong> MyClass;  </li>
+<li>mysql&gt; show columns <strong>from</strong> MyClass;  </li>
+<li>3、删除表  </li>
+<li>命令：<strong>drop</strong> <strong>table</strong> &lt;表名&gt;  </li>
+<li>例如：删除表名为 MyClass 的表  </li>
+<li>mysql&gt; <strong>drop</strong> <strong>table</strong> MyClass;  </li>
+<li>4、插入数据  </li>
+<li>命令：<strong>insert</strong> <strong>into</strong> &lt;表名&gt; [( &lt;字段名&gt;[,..&lt;字段名n &gt; ])] <strong>values</strong> ( 值 )[, ( 值n )]  </li>
+<li>例如，往表 MyClass中插入二条记录, 这二条记录表示：编号为的名为Tom的成绩为.45, 编号为 的名为Joan 的成绩为.99，编号为 的名为Wang 的成绩为.5.  </li>
+<li>mysql&gt; <strong>insert</strong> <strong>into</strong> MyClass <strong>values</strong>(1,’Tom’,96.45),(2,’Joan’,82.99), (2,’Wang’, 96.59);  </li>
+<li>5、查询表中的数据  </li>
+<li>1)、查询所有行  </li>
+<li>命令：<strong>select</strong> &lt;字段，字段，…&gt; <strong>from</strong> &lt; 表名 &gt; <strong>where</strong> &lt; 表达式 &gt;  </li>
+<li>例如：查看表 MyClass 中所有数据  </li>
+<li>mysql&gt; <strong>select</strong>  <strong>from</strong> MyClass;  </li>
+<li>2）、查询前几行数据  </li>
+<li>例如：查看表 MyClass 中前行数据  </li>
+<li>mysql&gt; <strong>select</strong>  <strong>from</strong> MyClass <strong>order</strong> <strong>by</strong> id limit 0,2;  </li>
+<li>或者：  </li>
+<li>mysql&gt; <strong>select</strong>  <strong>from</strong> MyClass limit 0,2;  </li>
+<li>6、删除表中数据  </li>
+<li>命令：<strong>delete</strong> <strong>from</strong> 表名 <strong>where</strong> 表达式  </li>
+<li>例如：删除表 MyClass中编号为 的记录  </li>
+<li>mysql&gt; <strong>delete</strong> <strong>from</strong> MyClass <strong>where</strong> id=1;  </li>
+<li>7、修改表中数据：<strong>update</strong> 表名 <strong>set</strong> 字段=新值,…<strong>where</strong> 条件  </li>
+<li>mysql&gt; <strong>update</strong> MyClass <strong>set</strong> <strong>name</strong>=’Mary’<strong>where</strong> id=1;  </li>
+<li>7、在表中增加字段：  </li>
+<li>命令：<strong>alter</strong> <strong>table</strong> 表名 <strong>add</strong>字段 类型 其他;  </li>
+<li>例如：在表MyClass中添加了一个字段passtest，类型为<strong>int</strong>(4)，默认值为  </li>
+<li>mysql&gt; <strong>alter</strong> <strong>table</strong> MyClass <strong>add</strong> passtest <strong>int</strong>(4) <strong>default</strong> ’′  </li>
+<li>8、更改表名：  </li>
+<li>命令：rename <strong>table</strong> 原表名 <strong>to</strong> 新表名;  </li>
+<li>例如：在表MyClass名字更改为YouClass  </li>
+<li>mysql&gt; rename <strong>table</strong> MyClass <strong>to</strong> YouClass;  </li>
+</ol>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/10/17/Mysql数据库/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/14/Java面向对象/" class="archive-article-date">
-  	<time datetime="2019-10-14T11:27:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-14</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/10/14/Java面向对象/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java面向对象</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/14/Java面向对象/">Java面向对象</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -242,8 +371,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

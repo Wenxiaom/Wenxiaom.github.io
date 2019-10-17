@@ -152,6 +152,114 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Mysql数据库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/17/Mysql数据库/">Mysql数据库</a>
+    </h1>
+  
+
+        
+        <a href="/2019/10/17/Mysql数据库/" class="archive-article-date">
+  	<time datetime="2019-10-17T14:12:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>1、建表  </li>
+<li>命令：<strong>create</strong> <strong>table</strong> &lt;表名&gt; ( &lt;字段名&gt; &lt;类型&gt; [,..&lt;字段名n&gt; &lt;类型n&gt;]);  </li>
+<li>mysql&gt; <strong>create</strong> <strong>table</strong> MyClass(  </li>
+<li>&gt; id <strong>int</strong>(4) not null <strong>primary</strong> <strong>key</strong> auto_increment,  </li>
+<li>&gt; <strong>name</strong> <strong>char</strong>(20) not null,  </li>
+<li>&gt; sex <strong>int</strong>(4) not null <strong>default</strong> ’′,  </li>
+<li>&gt; degree <strong>double</strong>(16,2));  </li>
+<li>2、获取表结构  </li>
+<li>命令：<strong>desc</strong> 表名，或者show columns <strong>from</strong> 表名  </li>
+<li>mysql&gt;DESCRIBE MyClass  </li>
+<li>mysql&gt; <strong>desc</strong> MyClass;  </li>
+<li>mysql&gt; show columns <strong>from</strong> MyClass;  </li>
+<li>3、删除表  </li>
+<li>命令：<strong>drop</strong> <strong>table</strong> &lt;表名&gt;  </li>
+<li>例如：删除表名为 MyClass 的表  </li>
+<li>mysql&gt; <strong>drop</strong> <strong>table</strong> MyClass;  </li>
+<li>4、插入数据  </li>
+<li>命令：<strong>insert</strong> <strong>into</strong> &lt;表名&gt; [( &lt;字段名&gt;[,..&lt;字段名n &gt; ])] <strong>values</strong> ( 值 )[, ( 值n )]  </li>
+<li>例如，往表 MyClass中插入二条记录, 这二条记录表示：编号为的名为Tom的成绩为.45, 编号为 的名为Joan 的成绩为.99，编号为 的名为Wang 的成绩为.5.  </li>
+<li>mysql&gt; <strong>insert</strong> <strong>into</strong> MyClass <strong>values</strong>(1,’Tom’,96.45),(2,’Joan’,82.99), (2,’Wang’, 96.59);  </li>
+<li>5、查询表中的数据  </li>
+<li>1)、查询所有行  </li>
+<li>命令：<strong>select</strong> &lt;字段，字段，…&gt; <strong>from</strong> &lt; 表名 &gt; <strong>where</strong> &lt; 表达式 &gt;  </li>
+<li>例如：查看表 MyClass 中所有数据  </li>
+<li>mysql&gt; <strong>select</strong>  <strong>from</strong> MyClass;  </li>
+<li>2）、查询前几行数据  </li>
+<li>例如：查看表 MyClass 中前行数据  </li>
+<li>mysql&gt; <strong>select</strong>  <strong>from</strong> MyClass <strong>order</strong> <strong>by</strong> id limit 0,2;  </li>
+<li>或者：  </li>
+<li>mysql&gt; <strong>select</strong>  <strong>from</strong> MyClass limit 0,2;  </li>
+<li>6、删除表中数据  </li>
+<li>命令：<strong>delete</strong> <strong>from</strong> 表名 <strong>where</strong> 表达式  </li>
+<li>例如：删除表 MyClass中编号为 的记录  </li>
+<li>mysql&gt; <strong>delete</strong> <strong>from</strong> MyClass <strong>where</strong> id=1;  </li>
+<li>7、修改表中数据：<strong>update</strong> 表名 <strong>set</strong> 字段=新值,…<strong>where</strong> 条件  </li>
+<li>mysql&gt; <strong>update</strong> MyClass <strong>set</strong> <strong>name</strong>=’Mary’<strong>where</strong> id=1;  </li>
+<li>7、在表中增加字段：  </li>
+<li>命令：<strong>alter</strong> <strong>table</strong> 表名 <strong>add</strong>字段 类型 其他;  </li>
+<li>例如：在表MyClass中添加了一个字段passtest，类型为<strong>int</strong>(4)，默认值为  </li>
+<li>mysql&gt; <strong>alter</strong> <strong>table</strong> MyClass <strong>add</strong> passtest <strong>int</strong>(4) <strong>default</strong> ’′  </li>
+<li>8、更改表名：  </li>
+<li>命令：rename <strong>table</strong> 原表名 <strong>to</strong> 新表名;  </li>
+<li>例如：在表MyClass名字更改为YouClass  </li>
+<li>mysql&gt; rename <strong>table</strong> MyClass <strong>to</strong> YouClass;  </li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/10/17/Mysql数据库/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Java面向对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -309,144 +417,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/10/14/Java面向对象/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-post-title-with-whitespace" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/11/post-title-with-whitespace/">post title with whitespace</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/11/post-title-with-whitespace/" class="archive-article-date">
-  	<time datetime="2019-10-11T08:49:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>����dd</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/11/post-title-with-whitespace/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/11/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/11/hello-world/" class="archive-article-date">
-  	<time datetime="2019-10-11T08:38:59.348Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/11/hello-world/">展开全文 >></a>
         </p>
       
 
