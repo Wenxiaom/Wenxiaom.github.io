@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/11 | Hexo</title>
+  <title>Vuex 模块化实现待办事项的状态管理 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2019/11/index.html">
+  <meta name="description" content="在vue里，组件之间的作用域是独立的，父组件跟子组件之间的通讯可以通过prop属性来传参，但是在兄弟组件之间通讯就比较麻烦了。比如A组件要告诉一件事给B组件，那么A就要先告诉他们的爸组件，然后爸组件再告诉B。当组件比较多，要互相通讯的事情很多的话，爸组件要管他们那么多事，很累的。vuex正是为了解决这个问题，让多个子组件之间可以方便的通讯。 项目介绍待办事项中的一个事件，它可能拥有几个状态，未完成">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vuex 模块化实现待办事项的状态管理">
+<meta property="og:url" content="http://yoursite.com/2019/11/25/Vuex-模块化实现待办事项的状态管理/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="在vue里，组件之间的作用域是独立的，父组件跟子组件之间的通讯可以通过prop属性来传参，但是在兄弟组件之间通讯就比较麻烦了。比如A组件要告诉一件事给B组件，那么A就要先告诉他们的爸组件，然后爸组件再告诉B。当组件比较多，要互相通讯的事情很多的话，爸组件要管他们那么多事，很累的。vuex正是为了解决这个问题，让多个子组件之间可以方便的通讯。 项目介绍待办事项中的一个事件，它可能拥有几个状态，未完成">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://raw.githubusercontent.com/lin-xin/notepad/master/screenshots/1.png">
+<meta property="og:updated_time" content="2019-11-25T14:23:45.702Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Vuex 模块化实现待办事项的状态管理">
+<meta name="twitter:description" content="在vue里，组件之间的作用域是独立的，父组件跟子组件之间的通讯可以通过prop属性来传参，但是在兄弟组件之间通讯就比较麻烦了。比如A组件要告诉一件事给B组件，那么A就要先告诉他们的爸组件，然后爸组件再告诉B。当组件比较多，要互相通讯的事情很多的话，爸组件要管他们那么多事，很累的。vuex正是为了解决这个问题，让多个子组件之间可以方便的通讯。 项目介绍待办事项中的一个事件，它可能拥有几个状态，未完成">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/lin-xin/notepad/master/screenshots/1.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,103 +156,186 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Vuex-模块化实现待办事项的状态管理" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Vuex 模块化实现待办事项的状态管理
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/25/Vuex-模块化实现待办事项的状态管理/" class="archive-article-date">
+
+        
+        <a href="/2019/11/25/Vuex-模块化实现待办事项的状态管理/" class="archive-article-date">
   	<time datetime="2019-11-25T14:22:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-25</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/25/Vuex-模块化实现待办事项的状态管理/">Vuex 模块化实现待办事项的状态管理</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在vue里，组件之间的作用域是独立的，父组件跟子组件之间的通讯可以通过prop属性来传参，但是在兄弟组件之间通讯就比较麻烦了。比如A组件要告诉一件事给B组件，那么A就要先告诉他们的爸组件，然后爸组件再告诉B。当组件比较多，要互相通讯的事情很多的话，爸组件要管他们那么多事，很累的。vuex正是为了解决这个问题，让多个子组件之间可以方便的通讯。</p>
+<h2 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h2><p>待办事项中的一个事件，它可能拥有几个状态，未完成、已完成、已取消或被删除等。这个事件需要在这多种状态之间切换，那么使用vuex来管理也是非常方便的。</p>
+<p>来看一下vuex怎么完成状态管理的：</p>
+<p><img src="https://raw.githubusercontent.com/lin-xin/notepad/master/screenshots/1.png" alt="image"></p>
+<p>所有组件都是调用actions，分发mutation去修改state，然后state经过getter又更新到各个组件里。state又通过localStorage存储数据到本地，下次重新打开时再读取保存的数据。</p>
+<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><p>为什么要用模块化？当我们的项目比较大，组件很多，功能也多，会导致state里要存放很多内容，整个 store 都会很庞大，很难管理。<br>当我们使用模块化，每个模块拥有自己的 state、mutation、action、getter，这样子我们就可以把我们的项目根据功能划分为多个模块去使用vuex了，而且后期维护也不会一脸懵逼。</p>
+<h2 id="状态管理"><a href="#状态管理" class="headerlink" title="状态管理"></a>状态管理</h2><p>接下来，我们来看看vuex完成状态管理的一个流程。<br>举个栗子：一个待办事项，勾选之后，会在未完成列表里移除，并在已完成的列表里出现。这个过程，是这个待办事项的状态发生了改变。勾选的时候，是执行了一个方法，那我们就先写这个方法。在 event_list.vue 文件里新建一个moveToDone方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;    moveToDone(id)&#123; //移至已完成        this.$store.dispatch(&apos;eventdone&apos;, id);    &#125;&#125;</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<p>在 moveToDone 方法中通过 store.dispatch 方法触发 action, 接下来我们在 eventModule/actions.js 中来注册这个 action, 接受一个 id 的参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;    eventdone = (&#123; commit &#125;, param) =&gt;&#123;        commit(&apos;EVENTDONE&apos;,&#123;id: param&#125;);    &#125;&#125;</span><br></pre></td></tr></table></figure>
 
+<p>action 通过调用 store.commit 提交载荷(也就是{id: param}这个对象)到名为’EVENTDONE’的 mutation，那我们再来注册这个 mutation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;    EVENTDONE(states,obj)&#123;        for (let i = 0; i &lt; states.event.length; i++) &#123;            if (states.event[i].id === obj.id) &#123;                states.event[i].type = 2;                states.event[i].time = getDate();                var item = states.event[i];                states.event.splice(i, 1);          // 把该事件在数组中删除                break;            &#125;        &#125;        states.event.unshift(item);                 // 把该事件存到数组的第一个元素        local.set(states);                          // 将整个状态存到本地    &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过 mutation 去修改 state, state里我们存放了一个 event 属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;    event: []&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>在组件中要获得这个 state 里的 event, 那就需要写个getters</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;    getDone(states)&#123;        return states.event.filter(function (d) &#123;            if (d.type === 2) &#123;                 // type == 2表示已完成                return d;                       // 返回已完成的事件            &#125;        &#125;);    &#125;&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>然后每个module里都有一个index.js文件，把自己的state、mutation、action、getters都集合起来，就是一个module</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import * as func from &apos;../function&apos;;import actions from &apos;./actions.js&apos;;import mutations from &apos;./mutations.js&apos;;import state from &apos;./state.js&apos;;import getters from &apos;./getters.js&apos;;export default &#123;    state,    getters,    actions,    mutations&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在 store/index.js 里创建一个 store 对象来存放这个module</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &apos;vue&apos;;import Vuex from &apos;vuex&apos;;import event from &apos;./eventModule&apos;;Vue.use(Vuex);export default new Vuex.Store(&#123;    modules: &#123;        event    &#125;&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>最后在 event_list.vue 组件上，我们通过计算属性 computed 来获取到这个从未完成的状态改变到已完成的状态，我们要用到 store 这个对象里的getters</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;    getDone()&#123;        return this.$store.getters.getDone;    &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样子，完成了 ‘未完成’ =&gt; ‘已完成’ 从提交修改到更新视图读取的整个流程，也是 vuex 工作的整个流程。通过 module 的封装，更加方便多模块项目的开发和维护。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/25/Vuex-模块化实现待办事项的状态管理/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/25/Vue-js-插件开发详解/" class="archive-article-date">
-  	<time datetime="2019-11-25T14:18:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-25</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/25/Vue-js-插件开发详解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vue.js 插件开发详解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/25/Vue-js-插件开发详解/">Vue.js 插件开发详解</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/25/python/" class="archive-article-date">
-  	<time datetime="2019-11-25T13:48:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/25/python/">python</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -269,8 +358,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
