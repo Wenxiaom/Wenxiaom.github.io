@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>python | Hexo</title>
+  <title>Vue.js 插件开发详解 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Python是一种跨平台的计算机程序设计语言。是一种面向对象的动态类型语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。 Python是一种解释型脚本语言，可以应用于以下领域：  Web 和 Internet开发 科学计算和统计 人工智能 教育 桌面界面开发 软件开发 后端开发  Python的设计目标之一是让代码具备高度">
+  <meta name="description" content="随着 Vue.js 越来越火，Vue.js 的相关插件也在不断的被贡献出来，数不胜数。比如官方推荐的 vue-router、vuex 等，都是非常优秀的插件。但是我们更多的人还只停留在使用的阶段，比较少自己开发。所以接下来会通过一个简单的 vue-toast 插件，来了解掌握插件的开发和使用。 认识插件想要开发插件，先要认识一个插件是什么样子的。 Vue.js 的插件应当有一个公开方法 insta">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python">
-<meta property="og:url" content="http://yoursite.com/2019/11/25/python/index.html">
+<meta property="og:title" content="Vue.js 插件开发详解">
+<meta property="og:url" content="http://yoursite.com/2019/11/25/Vue-js-插件开发详解/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Python是一种跨平台的计算机程序设计语言。是一种面向对象的动态类型语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。 Python是一种解释型脚本语言，可以应用于以下领域：  Web 和 Internet开发 科学计算和统计 人工智能 教育 桌面界面开发 软件开发 后端开发  Python的设计目标之一是让代码具备高度">
+<meta property="og:description" content="随着 Vue.js 越来越火，Vue.js 的相关插件也在不断的被贡献出来，数不胜数。比如官方推荐的 vue-router、vuex 等，都是非常优秀的插件。但是我们更多的人还只停留在使用的阶段，比较少自己开发。所以接下来会通过一个简单的 vue-toast 插件，来了解掌握插件的开发和使用。 认识插件想要开发插件，先要认识一个插件是什么样子的。 Vue.js 的插件应当有一个公开方法 insta">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-25T13:53:33.294Z">
+<meta property="og:updated_time" content="2019-11-25T14:19:56.783Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python">
-<meta name="twitter:description" content="Python是一种跨平台的计算机程序设计语言。是一种面向对象的动态类型语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。 Python是一种解释型脚本语言，可以应用于以下领域：  Web 和 Internet开发 科学计算和统计 人工智能 教育 桌面界面开发 软件开发 后端开发  Python的设计目标之一是让代码具备高度">
+<meta name="twitter:title" content="Vue.js 插件开发详解">
+<meta name="twitter:description" content="随着 Vue.js 越来越火，Vue.js 的相关插件也在不断的被贡献出来，数不胜数。比如官方推荐的 vue-router、vuex 等，都是非常优秀的插件。但是我们更多的人还只停留在使用的阶段，比较少自己开发。所以接下来会通过一个简单的 vue-toast 插件，来了解掌握插件的开发和使用。 认识插件想要开发插件，先要认识一个插件是什么样子的。 Vue.js 的插件应当有一个公开方法 insta">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -154,90 +154,56 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-python" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Vue-js-插件开发详解" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      python
+      Vue.js 插件开发详解
     </h1>
   
 
         
-        <a href="/2019/11/25/python/" class="archive-article-date">
-  	<time datetime="2019-11-25T13:48:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-25</time>
+        <a href="/2019/11/25/Vue-js-插件开发详解/" class="archive-article-date">
+  	<time datetime="2019-11-25T14:18:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Python是一种跨平台的<a href="https://baike.baidu.com/item/计算机程序设计语言/7073760" target="_blank" rel="noopener">计算机程序设计语言</a>。是一种面向对象的动态类型语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。</p>
-<p>Python是一种解释型脚本语言，可以应用于以下领域：</p>
-<ul>
-<li>Web 和 Internet开发</li>
-<li>科学计算和统计</li>
-<li>人工智能</li>
-<li>教育</li>
-<li>桌面界面开发</li>
-<li>软件开发</li>
-<li>后端开发</li>
-</ul>
-<p>Python的设计目标之一是让代码具备高度的可阅读性。它设计时尽量使用其它语言经常使用的标点符号和英文单字，让代码看起来整洁美观。它不像其他的静态语言如C、Pascal那样需要重复书写声明语句，也不像它们的语法那样经常有特殊情况和意外。</p>
-<p>Python开发者有意让违反了<a href="https://baike.baidu.com/item/缩进/7337492" target="_blank" rel="noopener">缩进</a>规则的程序不能通过编译，以此来强制程序员养成良好的编程习惯。并且Python语言利用缩进表示语句块的开始和退出（Off-side规则），而非使用花括号或者某种关键字。增加缩进表示语句块的开始，而减少缩进则表示语句块的退出。缩进成为了语法的一部分。例如if语句：python3</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`if` `age&lt;``21``:``    ``print``(``&quot;你不能买酒。&quot;``)``    ``print``(``&quot;不过你能买口香糖。&quot;``)``print``(``&quot;这句话在if语句块的外面。&quot;``)`</span><br></pre></td></tr></table></figure>
+        <p>随着 Vue.js 越来越火，Vue.js 的相关插件也在不断的被贡献出来，数不胜数。比如官方推荐的 vue-router、vuex 等，都是非常优秀的插件。但是我们更多的人还只停留在使用的阶段，比较少自己开发。所以接下来会通过一个简单的 vue-toast 插件，来了解掌握插件的开发和使用。</p>
+<h2 id="认识插件"><a href="#认识插件" class="headerlink" title="认识插件"></a>认识插件</h2><p>想要开发插件，先要认识一个插件是什么样子的。</p>
+<p>Vue.js 的插件应当有一个公开方法 install 。这个方法的第一个参数是 Vue 构造器 , 第二个参数是一个可选的选项对象:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MyPlugin.install = function (Vue, options) &#123;  Vue.myGlobalMethod = function () &#123;  // 1. 添加全局方法或属性，如: vue-custom-element    // 逻辑...  &#125;  Vue.directive(&apos;my-directive&apos;, &#123;  // 2. 添加全局资源：指令/过滤器/过渡等，如 vue-touch    bind (el, binding, vnode, oldVnode) &#123;      // 逻辑...    &#125;    ...  &#125;)  Vue.mixin(&#123;    created: function () &#123;  // 3. 通过全局 mixin方法添加一些组件选项，如: vuex      // 逻辑...    &#125;    ...  &#125;)  Vue.prototype.$myMethod = function (options) &#123;  // 4. 添加实例方法，通过把它们添加到 Vue.prototype 上实现    // 逻辑...  &#125;&#125;</span><br></pre></td></tr></table></figure>
 
-<p>根据PEP的规定，必须使用<strong>4个空格</strong>来表示每级缩进（不清楚4个空格的规定如何，在实际编写中可以自定义空格数，但是要满足每级缩进间空格数相等）。使用Tab字符和其它数目的空格虽然都可以编译通过，但不符合编码规范。支持Tab字符和其它数目的空格仅仅是为兼容很旧的的Python程序和某些有问题的编辑程序。</p>
-<p>​     </p>
-<h3 id="控制语句"><a href="#控制语句" class="headerlink" title="控制语句"></a>控制语句</h3><p>if语句，当条件成立时运行语句块。经常与else, elif(相当于else if) 配合使用。</p>
-<p>for语句，遍历列表、字符串、字典、集合等<a href="https://baike.baidu.com/item/迭代器" target="_blank" rel="noopener">迭代器</a>，依次处理迭代器中的每个元素。</p>
-<p>while语句，当条件为真时，循环运行语句块。</p>
-<p>try语句，与except,finally配合使用处理在程序运行中出现的异常情况。</p>
-<p>class语句，用于定义<a href="https://baike.baidu.com/item/类型/6737759" target="_blank" rel="noopener">类型</a>。</p>
-<p>def语句，用于定义函数和类型的方法。</p>
-<p>pass语句，表示此行为空，不运行任何操作。</p>
-<p>assert语句，用于程序调试阶段时测试运行条件是否满足。</p>
-<p>with语句，Python2.6以后定义的语法，在一个场景中运行语句块。比如，运行语句块前加密，然后在语句块运行退出后解密。</p>
-<p>yield语句，在迭代器函数内使用，用于返回一个元素。自从Python 2.5版本以后。这个语句变成一个运算符。</p>
-<p>raise语句，制造一个错误。</p>
-<p>import语句，导入一个模块或包。</p>
-<p>from import语句，从包导入模块或从模块导入某个对象。</p>
-<p>import as语句，将导入的对象赋值给一个变量。</p>
-<p>in语句，判断一个对象是否在一个字符串/列表/元组里。</p>
-<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><p>Python的表达式写法与C/C++类似。只是在某些写法有所差别。</p>
-<p>主要的算术运算符与C/C++类似。+, -, <em>, /, //, *</em>, <del>, %分别表示加法或者取正、减法或者取负、乘法、除法、整除、乘方、取补、取余。&gt;&gt;, &lt;&lt;表示右移和左移。&amp;, |, ^表示二进制的AND, OR, XOR运算。&gt;, &lt;, ==, !=, &lt;=, &gt;=用于比较两个表达式的值，分别表示大于、小于、等于、不等于、小于等于、大于等于。在这些运算符里面，</del>, |, ^, &amp;, &lt;&lt;, &gt;&gt;必须应用于整数。</p>
-<p>Python使用and, or, not表示逻辑运算。</p>
-<p>is, is not用于比较两个变量是否是同一个对象。in, not in用于判断一个对象是否属于另外一个对象。</p>
-<p>Python支持“列表推导式”（list comprehension），比如计算0-9的平方和:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`&gt;&gt;&gt; ``sum``(x ``*` `x ``for` `x ``in` `range``(``10``))``285`</span><br></pre></td></tr></table></figure>
+<p>接下来要讲到的 vue-toast 插件则是通过添加实例方法实现的。我们先来看个小例子。先新建个js文件来编写插件：toast.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// toast.jsvar Toast = &#123;&#125;;Toast.install = function (Vue, options) &#123;    Vue.prototype.$msg = &apos;Hello World&apos;;&#125;module.exports = Toast;</span><br></pre></td></tr></table></figure>
 
-<p>Python使用<a href="https://baike.baidu.com/item/lambda/1266469" target="_blank" rel="noopener">lambda</a>表示匿名函数。匿名函数体只能是表达式。比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`&gt;&gt;&gt; add``=``lambda` `x, y : x ``+` `y``&gt;&gt;&gt; add(``3``,``2``)``5`</span><br></pre></td></tr></table></figure>
+<p>在 main.js 中，需要导入 toast.js 并且通过全局方法 Vue.use() 来使用插件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// main.jsimport Vue from &apos;vue&apos;;import Toast from &apos;./toast.js&apos;;Vue.use(Toast);</span><br></pre></td></tr></table></figure>
 
-<p>Python使用y if cond else x表示条件表达式。意思是当cond为真时，表达式的值为y，否则表达式的值为x。相当于C++和Java里的cond?y:x。</p>
-<p>Python区分列表(list)和元组(tuple)两种类型。list的写法是[1,2,3]，而tuple的写法是(1,2,3)。可以改变list中的元素，而不能改变tuple。在某些情况下，tuple的括号可以省略。tuple对于赋值语句有特殊的处理。因此，可以同时赋值给多个变量，比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`&gt;&gt;&gt; x, y``=``1``,``2` `# 同时给x,y赋值，最终结果：x=1, y=2`</span><br></pre></td></tr></table></figure>
+<p>然后，我们在组件中来获取该插件定义的 $msg 属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// App.vueexport default &#123;    mounted()&#123;        console.log(this.$msg);         // Hello World    &#125;&#125;</span><br></pre></td></tr></table></figure>
 
-<p>特别地，可以使用以下这种形式来交换两个变量的值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`&gt;&gt;&gt; x, y``=``y, x ``#最终结果：y=1, x=2`</span><br></pre></td></tr></table></figure>
+<p>可以看到，控制台成功的打印出了 Hello World 。既然 $msg 能获取到，那么我们就可以来实现我们的 vue-toast 插件了。</p>
+<h2 id="开发-vue-toast"><a href="#开发-vue-toast" class="headerlink" title="开发 vue-toast"></a>开发 vue-toast</h2><p>需求：在组件中通过调用 this.$toast(‘网络请求失败’) 来弹出提示，默认在底部显示。可以通过调用 this.$toast.top() 或 this.$toast.center() 等方法来实现在不同位置显示。 </p>
+<p>整理一下思路，弹出提示的时候，我可以在 body 中添加一个 div 用来显示提示信息，不同的位置我通过添加不同的类名来定位，那就可以开始写了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// toast.jsvar Toast = &#123;&#125;;var showToast = false;  // showToast 用于存储toast的显示状态Toast.install = function (Vue, options) &#123;    Vue.prototype.$toast = (tips) =&gt; &#123;        let toastTpl = Vue.extend(&#123;     // 1、创建构造器，定义好提示信息的模板            data()&#123;                return &#123;                    show: showToast                &#125;            &#125;,            template: &apos;&lt;div v-show=&quot;show&quot; class=&quot;vue-toast&quot;&gt;&apos; + tips + &apos;&lt;/div&gt;&apos;        &#125;);        var vm = new toastTpl();        // 2、创建实例        var tpl = vm.$mount().$el;      // 3、挂载实例                document.body.appendChild(tpl); // 4、使用原生DOM API把它插入文档中        vm.show = showToast = true;     // 5、显示该元素                setTimeout(function () &#123;        // 6、延迟2.5秒后隐藏该元素            vm.show = showToast = false;        &#125;, 2500)    &#125;&#125;module.exports = Toast;</span><br></pre></td></tr></table></figure>
 
-<p>Python使用’(单引号)和”(双引号)来表示字符串。与Perl、Unix Shell语言或者Ruby、Groovy等语言不一样，两种符号作用相同。一般地，如果字符串中出现了双引号，就使用单引号来表示字符串;反之则使用双引号。如果都没有出现，就依个人喜好选择。出现在字符串中的(反斜杠)被解释为特殊字符，比如\n表示换行符。表达式前加r指示Python不解释字符串中出现的\。这种写法通常用于编写正则表达式或者Windows文件路径。</p>
-<p>Python支持列表切割(list slices)，可以取得完整列表的一部分。支持切割操作的类型有str, bytes, list, tuple等。它的语法是…[left:right]或者…[left:right:stride]。假定nums变量的值是[1, 3, 5, 7, 8, 13, 20]，那么下面几个语句为真：</p>
-<p>nums[2:5] == [5, 7, 8] 从下标为2的元素切割到下标为5的元素，但不包含下标为5的元素。</p>
-<p>nums[1:] == [3, 5, 7, 8, 13, 20] 切割到最后一个元素。</p>
-<p>nums[:-3] == [1, 3, 5, 7] 从最开始的元素一直切割到倒数第3个元素。</p>
-<p>nums[:] == [1, 3, 5, 7, 8, 13, 20] 返回所有元素。改变新的列表不会影响到nums。</p>
-<p>nums[1:5:2] == [3, 7] 从下标为1的元素切割到下标为5的元素，且步长为2。</p>
-<p>​     </p>
-<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>Python的函数支持递归、默认参数值、可变参数，但不支持函数重载。为了增强代码的可读性，可以在函数后书写“文档字符串”(Documentation Strings，或者简称docstrings)，用于解释函数的作用、参数的类型与意义、返回值类型与取值范围等。可以使用内置函数help()打印出函数的使用帮助。比如：</p>
-<p>&gt;&gt;&gt; def randint(a, b):</p>
-<p>… “Return random integer in range [a, b], including both end points.”…</p>
-<p>&gt;&gt;&gt; help(randint)</p>
-<p>Help on function randint in module <strong>main</strong>:</p>
-<p>randint(a, b)</p>
-<p>Return random integer inrange[a, b], including both end points.</p>
+<p>好像很简单，我们就实现了 this.$toast() ，接下来显示不同位置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// toast.js[&apos;bottom&apos;, &apos;center&apos;, &apos;top&apos;].forEach(type =&gt; &#123;    Vue.prototype.$toast[type] = (tips) =&gt; &#123;        return Vue.prototype.$toast(tips,type)    &#125;&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>这里把 type 传给 $toast 在该方法里进行不同位置的处理，上面说了通过添加不同的类名(toast-bottom、toast-top、toast-center)来实现，那 $toast 方法需要小小修改一下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototype.$toast = (tips,type) =&gt; &#123;     // 添加 type 参数    let toastTpl = Vue.extend(&#123;             // 模板添加位置类        data()&#123;            return &#123;                show: showToast            &#125;        &#125;,        template: &apos;&lt;div v-show=&quot;show&quot; class=&quot;vue-toast toast-&apos;+ type +&apos;&quot;&gt;&apos; + tips + &apos;&lt;/div&gt;&apos;    &#125;);    ...&#125;</span><br></pre></td></tr></table></figure>
+
+<p>好像差不多了。但是如果我想默认在顶部显示，我每次都要调用 this.$toast.top() 好像就有点多余了，我能不能 this.$toast() 就直接在我想要的地方呢？还有我不想要 2.5s 后才消失呢？这时候注意到 Toast.install(Vue,options) 里的 options 参数，我们可以在 Vue.use() 通过 options 传进我们想要的参数。最后修改插件如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var Toast = &#123;&#125;;var showToast = false;Toast.install = function (Vue, options) &#123;    let opt = &#123;        defaultType:&apos;bottom&apos;,   // 默认显示位置        duration:&apos;2500&apos;         // 持续时间    &#125;    for(let property in options)&#123;        opt[property] = options[property];  // 使用 options 的配置    &#125;    Vue.prototype.$toast = (tips,type) =&gt; &#123;        if(type)&#123;            opt.defaultType = type;         // 如果有传type，位置则设为该type        &#125;        if(showToast)&#123;            // 如果toast还在，则不再执行            return;        &#125;        let toastTpl = Vue.extend(&#123;            data()&#123;                return &#123;                    show: showToast                &#125;            &#125;,            template: &apos;&lt;div v-show=&quot;show&quot; class=&quot;vue-toast toast-&apos;+opt.defaultType+&apos;&quot;&gt;&apos; + tips + &apos;&lt;/div&gt;&apos;        &#125;);        var vm = new toastTpl()        var tpl = vm.$mount().$el;                document.body.appendChild(tpl);        vm.show = showToast = true;                setTimeout(function () &#123;            vm.show = showToast = false;        &#125;, opt.duration)    &#125;    [&apos;bottom&apos;, &apos;center&apos;, &apos;top&apos;].forEach(type =&gt; &#123;        Vue.prototype.$toast[type] = (tips) =&gt; &#123;            return Vue.prototype.$toast(tips,type)        &#125;    &#125;)&#125;module.exports = Toast;</span><br></pre></td></tr></table></figure>
+
+<p>这样子一个简单的 vue 插件就实现了，并且可以通过 npm 打包发布，下次就可以使用 npm install 来安装了。</p>
+<p>源码地址：<a href="https://github.com/lin-xin/vue-toast" target="_blank" rel="noopener">vue-toast</a></p>
 
       
 
@@ -317,7 +283,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/25/python/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/25/Vue-js-插件开发详解/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -331,18 +297,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/11/25/Vue-js-插件开发详解/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Vue.js 插件开发详解
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/10/17/Mysql数据库/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Mysql数据库</div>
+    <a href="/2019/11/25/python/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">python</div>
       <i class="icon-circle-right"></i>
     </a>
   
