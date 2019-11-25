@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | Hexo</title>
+  <title>JavaScript 中 apply 、call 的详解 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+  <meta name="description" content="ECMAScript 规范给所有函数都定义了 call 与 apply 两个方法，它们的应用非常广泛，它们的作用也是一模一样，只是传参的形式有区别而已。 apply( )apply 方法传入两个参数：一个是作为函数上下文的对象，另外一个是作为函数参数所组成的数组。 1var obj = &amp;#123;    name : &amp;apos;linxin&amp;apos;&amp;#125;function func(f">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 中 apply 、call 的详解">
+<meta property="og:url" content="http://yoursite.com/2019/11/25/JavaScript-中-apply-、call-的详解/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="ECMAScript 规范给所有函数都定义了 call 与 apply 两个方法，它们的应用非常广泛，它们的作用也是一模一样，只是传参的形式有区别而已。 apply( )apply 方法传入两个参数：一个是作为函数上下文的对象，另外一个是作为函数参数所组成的数组。 1var obj = &amp;#123;    name : &amp;apos;linxin&amp;apos;&amp;#125;function func(f">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-25T14:33:06.366Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="JavaScript 中 apply 、call 的详解">
+<meta name="twitter:description" content="ECMAScript 规范给所有函数都定义了 call 与 apply 两个方法，它们的应用非常广泛，它们的作用也是一模一样，只是传参的形式有区别而已。 apply( )apply 方法传入两个参数：一个是作为函数上下文的对象，另外一个是作为函数参数所组成的数组。 1var obj = &amp;#123;    name : &amp;apos;linxin&amp;apos;&amp;#125;function func(f">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,211 +154,185 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-JavaScript-中-apply-、call-的详解" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      JavaScript 中 apply 、call 的详解
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/25/JavaScript-中-apply-、call-的详解/" class="archive-article-date">
+
+        
+        <a href="/2019/11/25/JavaScript-中-apply-、call-的详解/" class="archive-article-date">
   	<time datetime="2019-11-25T14:32:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-25</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/25/JavaScript-中-apply-、call-的详解/">JavaScript 中 apply 、call 的详解</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ECMAScript 规范给所有函数都定义了 call 与 apply 两个方法，它们的应用非常广泛，它们的作用也是一模一样，只是传参的形式有区别而已。</p>
+<h2 id="apply"><a href="#apply" class="headerlink" title="apply( )"></a>apply( )</h2><p>apply 方法传入两个参数：一个是作为函数上下文的对象，另外一个是作为函数参数所组成的数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;    name : &apos;linxin&apos;&#125;function func(firstName, lastName)&#123;    console.log(firstName + &apos; &apos; + this.name + &apos; &apos; + lastName);&#125;func.apply(obj, [&apos;A&apos;, &apos;B&apos;]);    // A linxin B</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<p>可以看到，obj 是作为函数上下文的对象，函数 func 中 this 指向了 obj 这个对象。参数 A 和 B 是放在数组中传入 func 函数，分别对应 func 参数的列表元素。</p>
+<h2 id="call"><a href="#call" class="headerlink" title="call( )"></a>call( )</h2><p>call 方法第一个参数也是作为函数上下文的对象，但是后面传入的是一个参数列表，而不是单个数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;    name: &apos;linxin&apos;&#125;function func(firstName, lastName) &#123;    console.log(firstName + &apos; &apos; + this.name + &apos; &apos; + lastName);&#125;func.call(obj, &apos;C&apos;, &apos;D&apos;);       // C linxin D</span><br></pre></td></tr></table></figure>
 
+<p>对比 apply 我们可以看到区别，C 和 D 是作为单独的参数传给 func 函数，而不是放到数组中。</p>
+<p>对于什么时候该用什么方法，其实不用纠结。如果你的参数本来就存在一个数组中，那自然就用 apply，如果参数比较散乱相互之间没什么关联，就用 call。</p>
+<h2 id="apply-和-call-的用法"><a href="#apply-和-call-的用法" class="headerlink" title="apply 和 call 的用法"></a>apply 和 call 的用法</h2><h3 id="1-改变-this-指向"><a href="#1-改变-this-指向" class="headerlink" title="1.改变 this 指向"></a>1.改变 this 指向</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;    name: &apos;linxin&apos;&#125;function func() &#123;    console.log(this.name);&#125;func.call(obj);       // linxin</span><br></pre></td></tr></table></figure>
+
+<p>我们知道，call 方法的第一个参数是作为函数上下文的对象，这里把 obj 作为参数传给了 func，此时函数里的 this 便指向了 obj 对象。此处 func 函数里其实相当于</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function func() &#123;    console.log(obj.name);&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-借用别的对象的方法"><a href="#2-借用别的对象的方法" class="headerlink" title="2.借用别的对象的方法"></a>2.借用别的对象的方法</h3><p>先看例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var Person1  = function () &#123;    this.name = &apos;linxin&apos;;&#125;var Person2 = function () &#123;    this.getname = function () &#123;        console.log(this.name);    &#125;    Person1.call(this);&#125;var person = new Person2();person.getname();       // linxin</span><br></pre></td></tr></table></figure>
+
+<p>从上面我们看到，Person2 实例化出来的对象 person 通过 getname 方法拿到了 Person1 中的 name。因为在 Person2 中，Person1.call(this) 的作用就是使用 Person1 对象代替 this 对象，那么 Person2 就有了 Person1  中的所有属性和方法了，相当于 Person2 继承了 Person1 的属性和方法。</p>
+<h3 id="3-调用函数"><a href="#3-调用函数" class="headerlink" title="3.调用函数"></a>3.调用函数</h3><p>apply、call 方法都会使函数立即执行，因此它们也可以用来调用函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function func() &#123;    console.log(&apos;linxin&apos;);&#125;func.call();            // linxin</span><br></pre></td></tr></table></figure>
+
+<h2 id="call-和-bind-的区别"><a href="#call-和-bind-的区别" class="headerlink" title="call 和 bind 的区别"></a>call 和 bind 的区别</h2><p>在 EcmaScript5 中扩展了叫 bind 的方法，在低版本的 IE 中不兼容。它和 call 很相似，接受的参数有两部分，第一个参数是是作为函数上下文的对象，第二部分参数是个列表，可以接受多个参数。<br>它们之间的区别有以下两点。</p>
+<h3 id="1-bind-发返回值是函数"><a href="#1-bind-发返回值是函数" class="headerlink" title="1.bind 发返回值是函数"></a>1.bind 发返回值是函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;    name: &apos;linxin&apos;&#125;function func() &#123;    console.log(this.name);&#125;var func1 = func.bind(obj);func1();                        // linxin</span><br></pre></td></tr></table></figure>
+
+<p>bind 方法不会立即执行，而是返回一个改变了上下文 this 后的函数。而原函数 func 中的 this 并没有被改变，依旧指向全局对象 window。</p>
+<h3 id="2-参数的使用"><a href="#2-参数的使用" class="headerlink" title="2.参数的使用"></a>2.参数的使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function func(a, b, c) &#123;    console.log(a, b, c);&#125;var func1 = func.bind(null,&apos;linxin&apos;);func(&apos;A&apos;, &apos;B&apos;, &apos;C&apos;);            // A B Cfunc1(&apos;A&apos;, &apos;B&apos;, &apos;C&apos;);           // linxin A Bfunc1(&apos;B&apos;, &apos;C&apos;);                // linxin B Cfunc.call(null, &apos;linxin&apos;);      // linxin undefined undefined</span><br></pre></td></tr></table></figure>
+
+<p>call 是把第二个及以后的参数作为 func 方法的实参传进去，而 func1 方法的实参实则是在 bind 中参数的基础上再往后排。</p>
+<p>在低版本浏览器没有 bind 方法，我们也可以自己实现一个。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if (!Function.prototype.bind) &#123;    Function.prototype.bind = function () &#123;        var self = this,                        // 保存原函数            context = [].shift.call(arguments), // 保存需要绑定的this上下文            args = [].slice.call(arguments);    // 剩余的参数转为数组        return function () &#123;                    // 返回一个新函数            self.apply(context,[].concat.call(args, [].slice.call(arguments)));        &#125;    &#125;&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/25/JavaScript-中-apply-、call-的详解/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/25/JavaScript-中-this-的详解/" class="archive-article-date">
-  	<time datetime="2019-11-25T14:26:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-25</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/25/JavaScript-中-this-的详解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript 中 this 的详解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/25/JavaScript-中-this-的详解/">JavaScript 中 this 的详解</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/25/Vuex-模块化实现待办事项的状态管理/" class="archive-article-date">
-  	<time datetime="2019-11-25T14:22:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/25/Vuex-模块化实现待办事项的状态管理/">Vuex 模块化实现待办事项的状态管理</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/25/Vue-js-插件开发详解/" class="archive-article-date">
-  	<time datetime="2019-11-25T14:18:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/25/Vue-js-插件开发详解/">Vue.js 插件开发详解</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/25/python/" class="archive-article-date">
-  	<time datetime="2019-11-25T13:48:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/25/python/">python</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/17/Mysql数据库/" class="archive-article-date">
-  	<time datetime="2019-10-17T14:12:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/17/Mysql数据库/">Mysql数据库</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/14/Java面向对象/" class="archive-article-date">
-  	<time datetime="2019-10-14T11:27:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/14/Java面向对象/">Java面向对象</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -377,8 +355,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
