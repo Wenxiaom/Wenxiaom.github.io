@@ -6,21 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Vuex 模块化实现待办事项的状态管理 | Hexo</title>
+  <title>JavaScript 中 this 的详解 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在vue里，组件之间的作用域是独立的，父组件跟子组件之间的通讯可以通过prop属性来传参，但是在兄弟组件之间通讯就比较麻烦了。比如A组件要告诉一件事给B组件，那么A就要先告诉他们的爸组件，然后爸组件再告诉B。当组件比较多，要互相通讯的事情很多的话，爸组件要管他们那么多事，很累的。vuex正是为了解决这个问题，让多个子组件之间可以方便的通讯。 项目介绍待办事项中的一个事件，它可能拥有几个状态，未完成">
+  <meta name="description" content="this 是 js 中定义的关键字，它自动定义于每一个函数域内，但是它的指向却让人很迷惑。在实际应用中，this 的指向大致可以分为以下四种情况。 this 的指向1.作为普通函数调用当函数作为一个普通函数被调用，this 指向全局对象。在浏览器里，全局对象就是 window。 1window.name = &amp;apos;linxin&amp;apos;;function getName()&amp;#123;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vuex 模块化实现待办事项的状态管理">
-<meta property="og:url" content="http://yoursite.com/2019/11/25/Vuex-模块化实现待办事项的状态管理/index.html">
+<meta property="og:title" content="JavaScript 中 this 的详解">
+<meta property="og:url" content="http://yoursite.com/2019/11/25/JavaScript-中-this-的详解/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="在vue里，组件之间的作用域是独立的，父组件跟子组件之间的通讯可以通过prop属性来传参，但是在兄弟组件之间通讯就比较麻烦了。比如A组件要告诉一件事给B组件，那么A就要先告诉他们的爸组件，然后爸组件再告诉B。当组件比较多，要互相通讯的事情很多的话，爸组件要管他们那么多事，很累的。vuex正是为了解决这个问题，让多个子组件之间可以方便的通讯。 项目介绍待办事项中的一个事件，它可能拥有几个状态，未完成">
+<meta property="og:description" content="this 是 js 中定义的关键字，它自动定义于每一个函数域内，但是它的指向却让人很迷惑。在实际应用中，this 的指向大致可以分为以下四种情况。 this 的指向1.作为普通函数调用当函数作为一个普通函数被调用，this 指向全局对象。在浏览器里，全局对象就是 window。 1window.name = &amp;apos;linxin&amp;apos;;function getName()&amp;#123;">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://raw.githubusercontent.com/lin-xin/notepad/master/screenshots/1.png">
-<meta property="og:updated_time" content="2019-11-25T14:23:45.702Z">
+<meta property="og:updated_time" content="2019-11-25T14:26:49.501Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vuex 模块化实现待办事项的状态管理">
-<meta name="twitter:description" content="在vue里，组件之间的作用域是独立的，父组件跟子组件之间的通讯可以通过prop属性来传参，但是在兄弟组件之间通讯就比较麻烦了。比如A组件要告诉一件事给B组件，那么A就要先告诉他们的爸组件，然后爸组件再告诉B。当组件比较多，要互相通讯的事情很多的话，爸组件要管他们那么多事，很累的。vuex正是为了解决这个问题，让多个子组件之间可以方便的通讯。 项目介绍待办事项中的一个事件，它可能拥有几个状态，未完成">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/lin-xin/notepad/master/screenshots/1.png">
+<meta name="twitter:title" content="JavaScript 中 this 的详解">
+<meta name="twitter:description" content="this 是 js 中定义的关键字，它自动定义于每一个函数域内，但是它的指向却让人很迷惑。在实际应用中，this 的指向大致可以分为以下四种情况。 this 的指向1.作为普通函数调用当函数作为一个普通函数被调用，this 指向全局对象。在浏览器里，全局对象就是 window。 1window.name = &amp;apos;linxin&amp;apos;;function getName()&amp;#123;">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -156,57 +154,53 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Vuex-模块化实现待办事项的状态管理" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-JavaScript-中-this-的详解" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Vuex 模块化实现待办事项的状态管理
+      JavaScript 中 this 的详解
     </h1>
   
 
         
-        <a href="/2019/11/25/Vuex-模块化实现待办事项的状态管理/" class="archive-article-date">
-  	<time datetime="2019-11-25T14:22:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-25</time>
+        <a href="/2019/11/25/JavaScript-中-this-的详解/" class="archive-article-date">
+  	<time datetime="2019-11-25T14:26:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在vue里，组件之间的作用域是独立的，父组件跟子组件之间的通讯可以通过prop属性来传参，但是在兄弟组件之间通讯就比较麻烦了。比如A组件要告诉一件事给B组件，那么A就要先告诉他们的爸组件，然后爸组件再告诉B。当组件比较多，要互相通讯的事情很多的话，爸组件要管他们那么多事，很累的。vuex正是为了解决这个问题，让多个子组件之间可以方便的通讯。</p>
-<h2 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h2><p>待办事项中的一个事件，它可能拥有几个状态，未完成、已完成、已取消或被删除等。这个事件需要在这多种状态之间切换，那么使用vuex来管理也是非常方便的。</p>
-<p>来看一下vuex怎么完成状态管理的：</p>
-<p><img src="https://raw.githubusercontent.com/lin-xin/notepad/master/screenshots/1.png" alt="image"></p>
-<p>所有组件都是调用actions，分发mutation去修改state，然后state经过getter又更新到各个组件里。state又通过localStorage存储数据到本地，下次重新打开时再读取保存的数据。</p>
-<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><p>为什么要用模块化？当我们的项目比较大，组件很多，功能也多，会导致state里要存放很多内容，整个 store 都会很庞大，很难管理。<br>当我们使用模块化，每个模块拥有自己的 state、mutation、action、getter，这样子我们就可以把我们的项目根据功能划分为多个模块去使用vuex了，而且后期维护也不会一脸懵逼。</p>
-<h2 id="状态管理"><a href="#状态管理" class="headerlink" title="状态管理"></a>状态管理</h2><p>接下来，我们来看看vuex完成状态管理的一个流程。<br>举个栗子：一个待办事项，勾选之后，会在未完成列表里移除，并在已完成的列表里出现。这个过程，是这个待办事项的状态发生了改变。勾选的时候，是执行了一个方法，那我们就先写这个方法。在 event_list.vue 文件里新建一个moveToDone方法。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;    moveToDone(id)&#123; //移至已完成        this.$store.dispatch(&apos;eventdone&apos;, id);    &#125;&#125;</span><br></pre></td></tr></table></figure>
+        <p>this 是 js 中定义的关键字，它自动定义于每一个函数域内，但是它的指向却让人很迷惑。在实际应用中，this 的指向大致可以分为以下四种情况。</p>
+<h2 id="this-的指向"><a href="#this-的指向" class="headerlink" title="this 的指向"></a>this 的指向</h2><h3 id="1-作为普通函数调用"><a href="#1-作为普通函数调用" class="headerlink" title="1.作为普通函数调用"></a>1.作为普通函数调用</h3><p>当函数作为一个普通函数被调用，this 指向全局对象。在浏览器里，全局对象就是 window。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.name = &apos;linxin&apos;;function getName()&#123;    console.log(this.name);&#125;getName();                   // linxin</span><br></pre></td></tr></table></figure>
 
-<p>在 moveToDone 方法中通过 store.dispatch 方法触发 action, 接下来我们在 eventModule/actions.js 中来注册这个 action, 接受一个 id 的参数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;    eventdone = (&#123; commit &#125;, param) =&gt;&#123;        commit(&apos;EVENTDONE&apos;,&#123;id: param&#125;);    &#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看出，此时 this 指向了全局对象 window。<br>在ECMAScript5的严格模式下，这种情况 this 已经被规定不会指向全局对象了，而是 undefined。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;function fun()&#123;    console.log(this);&#125;fun();                      // undefined</span><br></pre></td></tr></table></figure>
 
-<p>action 通过调用 store.commit 提交载荷(也就是{id: param}这个对象)到名为’EVENTDONE’的 mutation，那我们再来注册这个 mutation</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;    EVENTDONE(states,obj)&#123;        for (let i = 0; i &lt; states.event.length; i++) &#123;            if (states.event[i].id === obj.id) &#123;                states.event[i].type = 2;                states.event[i].time = getDate();                var item = states.event[i];                states.event.splice(i, 1);          // 把该事件在数组中删除                break;            &#125;        &#125;        states.event.unshift(item);                 // 把该事件存到数组的第一个元素        local.set(states);                          // 将整个状态存到本地    &#125;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-作为对象的方法调用"><a href="#2-作为对象的方法调用" class="headerlink" title="2.作为对象的方法调用"></a>2.作为对象的方法调用</h3><p>当函数作为一个对象里的方法被调用，this 指向该对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;    name : &apos;linxin&apos;,    getName : function()&#123;        console.log(this.name);    &#125;&#125;obj.getName();              // linxin</span><br></pre></td></tr></table></figure>
 
-<p>通过 mutation 去修改 state, state里我们存放了一个 event 属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;    event: []&#125;;</span><br></pre></td></tr></table></figure>
+<p>如果把对象的方法赋值给一个变量，再调用这个变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;    fun1 : function()&#123;        console.log(this);    &#125;&#125;var fun2 = obj.fun1;fun2();                     // window</span><br></pre></td></tr></table></figure>
 
-<p>在组件中要获得这个 state 里的 event, 那就需要写个getters</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;    getDone(states)&#123;        return states.event.filter(function (d) &#123;            if (d.type === 2) &#123;                 // type == 2表示已完成                return d;                       // 返回已完成的事件            &#125;        &#125;);    &#125;&#125;;</span><br></pre></td></tr></table></figure>
+<p>此时调用 fun2 方法 输出了 window 对象，说明此时 this 指向了全局对象。给 fun2 赋值，其实是相当于：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var fun2 = function()&#123;    console.log(this);&#125;</span><br></pre></td></tr></table></figure>
 
-<p>然后每个module里都有一个index.js文件，把自己的state、mutation、action、getters都集合起来，就是一个module</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import * as func from &apos;../function&apos;;import actions from &apos;./actions.js&apos;;import mutations from &apos;./mutations.js&apos;;import state from &apos;./state.js&apos;;import getters from &apos;./getters.js&apos;;export default &#123;    state,    getters,    actions,    mutations&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看出，此时的 this 已经跟 obj 没有任何关系了。这时 fun2 是作为普通函数调用。</p>
+<h3 id="3-作为构造函数调用"><a href="#3-作为构造函数调用" class="headerlink" title="3.作为构造函数调用"></a>3.作为构造函数调用</h3><p>js中没有类，但是可以从构造器中创建对象，并提供了 new 运算符来进行调用该构造器。构造器的外表跟普通函数一样，大部分的函数都可以当做构造器使用。当构造函数被调用时，this 指向了该构造函数实例化出来的对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var Person = function()&#123;    this.name = &apos;linxin&apos;;&#125;var obj = new Person();console.log(obj.name);      // linxin</span><br></pre></td></tr></table></figure>
 
-<p>在 store/index.js 里创建一个 store 对象来存放这个module</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &apos;vue&apos;;import Vuex from &apos;vuex&apos;;import event from &apos;./eventModule&apos;;Vue.use(Vuex);export default new Vuex.Store(&#123;    modules: &#123;        event    &#125;&#125;);</span><br></pre></td></tr></table></figure>
+<p>如果构造函数显式的返回一个对象，那么 this 则会指向该对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var Person = function()&#123;    this.name = &apos;linxin&apos;;    return &#123;        name : &apos;linshuai&apos;    &#125;&#125;var obj = new Person();console.log(obj.name);      // linshuai</span><br></pre></td></tr></table></figure>
 
-<p>最后在 event_list.vue 组件上，我们通过计算属性 computed 来获取到这个从未完成的状态改变到已完成的状态，我们要用到 store 这个对象里的getters</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;    getDone()&#123;        return this.$store.getters.getDone;    &#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>如果该函数不用 new 调用，当作普通函数执行，那么 this 依然指向全局对象。</p>
+<h3 id="4-call-或-apply-调用"><a href="#4-call-或-apply-调用" class="headerlink" title="4.call() 或 apply() 调用"></a>4.call() 或 apply() 调用</h3><p>通过调用函数的 call() 或 apply() 方法可动态的改变 this 的指向。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var obj1 = &#123;    name : &apos;linxin&apos;,    getName : function()&#123;        console.log(this.name);    &#125;&#125;var obj2 = &#123;    name : &apos;linshuai&apos;&#125;obj1.getName();             // linxinobj1.getName.call(obj2);    // linshuaiobj1.getName.apply(obj2);   // linshuai</span><br></pre></td></tr></table></figure>
 
-<p>这样子，完成了 ‘未完成’ =&gt; ‘已完成’ 从提交修改到更新视图读取的整个流程，也是 vuex 工作的整个流程。通过 module 的封装，更加方便多模块项目的开发和维护。</p>
 
       
 
@@ -286,7 +280,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/25/Vuex-模块化实现待办事项的状态管理/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/25/JavaScript-中-this-的详解/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -300,18 +294,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/11/25/JavaScript-中-this-的详解/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          JavaScript 中 this 的详解
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/11/25/Vue-js-插件开发详解/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Vue.js 插件开发详解</div>
+    <a href="/2019/11/25/Vuex-模块化实现待办事项的状态管理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vuex 模块化实现待办事项的状态管理</div>
       <i class="icon-circle-right"></i>
     </a>
   

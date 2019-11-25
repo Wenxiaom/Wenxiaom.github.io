@@ -152,6 +152,95 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-JavaScript-中-this-的详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/25/JavaScript-中-this-的详解/">JavaScript 中 this 的详解</a>
+    </h1>
+  
+
+        
+        <a href="/2019/11/25/JavaScript-中-this-的详解/" class="archive-article-date">
+  	<time datetime="2019-11-25T14:26:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>this 是 js 中定义的关键字，它自动定义于每一个函数域内，但是它的指向却让人很迷惑。在实际应用中，this 的指向大致可以分为以下四种情况。</p>
+<h2 id="this-的指向"><a href="#this-的指向" class="headerlink" title="this 的指向"></a>this 的指向</h2><h3 id="1-作为普通函数调用"><a href="#1-作为普通函数调用" class="headerlink" title="1.作为普通函数调用"></a>1.作为普通函数调用</h3><p>当函数作为一个普通函数被调用，this 指向全局对象。在浏览器里，全局对象就是 window。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.name = &apos;linxin&apos;;function getName()&#123;    console.log(this.name);&#125;getName();                   // linxin</span><br></pre></td></tr></table></figure>
+
+<p>可以看出，此时 this 指向了全局对象 window。<br>在ECMAScript5的严格模式下，这种情况 this 已经被规定不会指向全局对象了，而是 undefined。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;function fun()&#123;    console.log(this);&#125;fun();                      // undefined</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-作为对象的方法调用"><a href="#2-作为对象的方法调用" class="headerlink" title="2.作为对象的方法调用"></a>2.作为对象的方法调用</h3><p>当函数作为一个对象里的方法被调用，this 指向该对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;    name : &apos;linxin&apos;,    getName : function()&#123;        console.log(this.name);    &#125;&#125;obj.getName();              // linxin</span><br></pre></td></tr></table></figure>
+
+<p>如果把对象的方法赋值给一个变量，再调用这个变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;    fun1 : function()&#123;        console.log(this);    &#125;&#125;var fun2 = obj.fun1;fun2();                     // window</span><br></pre></td></tr></table></figure>
+
+<p>此时调用 fun2 方法 输出了 window 对象，说明此时 this 指向了全局对象。给 fun2 赋值，其实是相当于：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var fun2 = function()&#123;    console.log(this);&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看出，此时的 this 已经跟 obj 没有任何关系了。这时 fun2 是作为普通函数调用。</p>
+<h3 id="3-作为构造函数调用"><a href="#3-作为构造函数调用" class="headerlink" title="3.作为构造函数调用"></a>3.作为构造函数调用</h3><p>js中没有类，但是可以从构造器中创建对象，并提供了 new 运算符来进行调用该构造器。构造器的外表跟普通函数一样，大部分的函数都可以当做构造器使用。当构造函数被调用时，this 指向了该构造函数实例化出来的对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var Person = function()&#123;    this.name = &apos;linxin&apos;;&#125;var obj = new Person();console.log(obj.name);      // linxin</span><br></pre></td></tr></table></figure>
+
+<p>如果构造函数显式的返回一个对象，那么 this 则会指向该对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var Person = function()&#123;    this.name = &apos;linxin&apos;;    return &#123;        name : &apos;linshuai&apos;    &#125;&#125;var obj = new Person();console.log(obj.name);      // linshuai</span><br></pre></td></tr></table></figure>
+
+<p>如果该函数不用 new 调用，当作普通函数执行，那么 this 依然指向全局对象。</p>
+<h3 id="4-call-或-apply-调用"><a href="#4-call-或-apply-调用" class="headerlink" title="4.call() 或 apply() 调用"></a>4.call() 或 apply() 调用</h3><p>通过调用函数的 call() 或 apply() 方法可动态的改变 this 的指向。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var obj1 = &#123;    name : &apos;linxin&apos;,    getName : function()&#123;        console.log(this.name);    &#125;&#125;var obj2 = &#123;    name : &apos;linshuai&apos;&#125;obj1.getName();             // linxinobj1.getName.call(obj2);    // linshuaiobj1.getName.apply(obj2);   // linshuai</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/11/25/JavaScript-中-this-的详解/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Vuex-模块化实现待办事项的状态管理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
